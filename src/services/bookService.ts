@@ -1,19 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
-import dotenv from "dotenv";
+import { supabase } from "../db/supabaseClient";
 
-dotenv.config();
-
-// TO DO change to .env and create client.ts
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_KEY!
-);
-
-export const addBookToDatabase = async (
-  title: string,
-  author: string,
-  price: number
-) => {
+export const addBook = async (title: string, author: string, price: number) => {
   const { data, error } = await supabase.from("books").insert([
     {
       title,
@@ -26,5 +13,24 @@ export const addBookToDatabase = async (
     throw new Error(error.message);
   }
 
+  return data;
+};
+
+export const getAllBooks = async () => {
+  const { data, error } = await supabase.from("books").select("*");
+  if (error) {
+    throw new Error(error.message);
+  }
+  return data;
+};
+
+export const getBook = async (id: string) => {
+  const { data, error } = await supabase
+    .from("books")
+    .select("*")
+    .eq("id", id);
+  if (error) {
+    throw new Error(error.message);
+  }
   return data;
 };
