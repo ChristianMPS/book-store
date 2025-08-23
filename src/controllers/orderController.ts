@@ -17,21 +17,26 @@ export const postOrder = async (req: Request, res: Response) => {
   if (!idBook || !quantity) {
     return res
       .status(400)
-      .json({ error: "idBook y quantity son obligatorios" });
+      .json({
+        error:
+          "The idBook and quantity fields are required, please fill them all in.",
+      });
   }
   try {
     const getBooks = await axios.get<Book[]>(`${API_GET_BOOK}/${idBook}`);
     const books = getBooks.data;
     const book = books[0];
     await createOrder(idBook, quantity, quantity * book.price);
-    return res.status(201).json({ message: "Orden creada con exito!" });
+    return res.status(201).json({ message: "Order successfully created!" });
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 404) {
       return res
         .status(400)
-        .json({ message: "El libro no existe, no se puede crear la orden" });
+        .json({
+          message: "The book does not exist, the order can't be created.",
+        });
     }
-    return res.status(500).json({ error: "Error al crear la orden" });
+    return res.status(500).json({ error: "Error creating order" });
   }
 };
 
@@ -40,6 +45,6 @@ export const getOrders = async (req: Request, res: Response) => {
     const orders = await getAllOrders();
     return res.status(200).json(orders);
   } catch (error) {
-    return res.status(500).json({ error: "Error al obtener las órdenes" });
+    return res.status(500).json({ error: "Error retrieving orders" });
   }
 };
