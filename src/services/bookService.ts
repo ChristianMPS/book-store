@@ -25,12 +25,6 @@ export const getAllBooks = async () => {
 };
 
 export const getBook = async (id: string) => {
-  const { data, error } = await supabase
-    .from("books")
-    .select("*")
-    .eq("id", id);
-  if (error) {
-    throw new Error(error.message);
-  }
-  return data;
+  const { data } = await supabase.from("books").select("*").eq("id", id);
+  return data ?? null;
 };

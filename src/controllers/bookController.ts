@@ -5,12 +5,13 @@ export const createBook = async (req: Request, res: Response) => {
   const { title, author, price } = req.body;
   if (!title || !author || !price) {
     return res.status(400).json({
-      error: "Los campos son obligatorios, por favor llenarlos todos.",
+      error:
+        "Los campos (title, author, price) son obligatorios, por favor llenarlos todos.",
     });
   }
   try {
-    const book = await addBook(title, author, price);
-    return res.status(201).json(book);
+    await addBook(title, author, price);
+    return res.status(201).json({ message: "Libro creado con exito!" });
   } catch (error) {
     return res
       .status(500)

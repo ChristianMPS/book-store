@@ -1,9 +1,13 @@
 import { supabase } from "../db/supabaseClient";
 
-export const createOrder = async (idBook: string, quantity: number) => {
-  const { data, error } = await supabase.from("orders").insert([
-    { idBook, quantity }
-  ]);
+export const createOrder = async (
+  idBook: string,
+  quantity: number,
+  totalPrice: number
+) => {
+  const { data, error } = await supabase
+    .from("orders")
+    .insert([{ idBook, quantity, totalPrice }]);
 
   if (error) {
     throw new Error(error.message);
