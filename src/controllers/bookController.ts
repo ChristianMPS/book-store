@@ -6,7 +6,7 @@ export const createBook = async (req: Request, res: Response) => {
   if (!title || !author || !price) {
     return res.status(400).json({
       error:
-        "The fields (title, author, price) are mandatory, please fill them all in.",
+        "The fields (title: text, author: text, price: number) are mandatory, please fill them all in.",
     });
   }
   try {

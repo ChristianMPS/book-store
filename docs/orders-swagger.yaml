@@ -1,0 +1,69 @@
+openapi: 3.0.1
+info:
+  title: Orders API
+  version: 1.0.0
+  description: API for managing book orders
+
+servers:
+  - url: http://localhost:3000/api/orders
+
+paths:
+  /orders:
+    post:
+      summary: Create new order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewOrder"
+      responses:
+        201:
+          description: Order successfully created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        400:
+          description: Invalid data or book does not exist
+
+    get:
+      summary: List all orders
+      responses:
+        200:
+          description: Order list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+        idBook:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+        totalPrice:
+          type: number
+        created_at:
+          type: string
+          format: date-time
+      required: [id, idBook, quantity, totalPrice, created_at]
+
+    NewOrder:
+      type: object
+      properties:
+        idBook:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+      required: [idBook, quantity]

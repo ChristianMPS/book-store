@@ -1,0 +1,90 @@
+openapi: 3.0.1
+info:
+  title: Books API
+  version: 1.0.0
+  description: API for managing books
+
+servers:
+  - url: http://localhost:3000/api/books
+
+paths:
+  /books:
+    post:
+      summary: Add a new book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewBook'
+      responses:
+        201:
+          description: Book successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        400:
+          description: Invalid data
+
+    get:
+      summary: List all books
+      responses:
+        200:
+          description: List of books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+
+  /books/{id}:
+    get:
+      summary: Get details about a book
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: book ID 
+      responses:
+        200:
+          description: Book details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        404:
+          description: Book not found
+
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        author:
+          type: string
+        price:
+          type: number
+          format: float
+      required: [id, title, author, price]
+
+    NewBook:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        price:
+          type: number
+          format: float
+      required: [title, author, price]
