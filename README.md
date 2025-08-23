@@ -29,8 +29,8 @@ Supabase was used for this project. Please in your google navegator type Supabas
 
    # Database
 
-   NEXT_PUBLIC_SUPABASE_URL="Enter the database URL"
-   SUPABASE_SERVICE_ROLE_KEY="Enter the database role key"
+   SUPABASE_URL="Enter the database URL"
+   SUPABASE_KEY="Enter the database role key"
 
    You will find them by clicking on “Connect” or just click in "Project overview" scroll down and watch Project API.
 
