@@ -21,7 +21,7 @@ created_at TIMESTAMP DEFAULT NOW(),
 totalPrice NUMERIC NOT NULL
 );
 
-Supabase was used for this project.
+Supabase was used for this project. Please in your google navegator type Supabase, open the link https://supabase.com and create a project (need to create and account for this).
 
 2. Create a file in the project root called .env
 
