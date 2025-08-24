@@ -33,7 +33,7 @@ Supabase was used for this project. Please in your google navegator type Supabas
    SUPABASE_URL="Enter the database URL"
    SUPABASE_KEY="Enter the database role key"
 
-   You will find them by clicking on “Connect” or just click in "Project overview" scroll down and watch Project API.
+   You will find them by clicking on “Connect” then in the "App frameworks" option or just click in "Project overview" scroll down and watch Project API.
 
 3. Run the command: npm install
 
