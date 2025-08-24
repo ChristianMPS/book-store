@@ -55,7 +55,7 @@ Supabase was used for this project. Please in your google navegator type Supabas
      {
      "title": "Game of thrones",
      "author": "George R.R. Martin",
-     "price":59,50
+     "price":59.50
      }
    - GET http://localhost:3000/api/books
    - GET http://localhost:3000/api/books/{id} example http://localhost:3000/api/books/42ca3786
