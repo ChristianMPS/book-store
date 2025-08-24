@@ -15,10 +15,10 @@ price NUMERIC not null
 
 CREATE TABLE orders (
 id SERIAL PRIMARY KEY,
-idBook uuid NOT NULL REFERENCES books(id),
+id_book uuid NOT NULL REFERENCES books(id),
 quantity INTEGER NOT NULL,
 created_at TIMESTAMP DEFAULT NOW(),
-totalPrice NUMERIC NOT NULL
+total_price NUMERIC NOT NULL
 );
 
 Supabase was used for this project. Please in your google navegator type Supabase, open the link https://supabase.com and create a project (need to create and account for this).
