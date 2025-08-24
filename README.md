@@ -3,6 +3,7 @@
 Junior Backend Developer Code Challenge
 
 ## Getting Started
+Clone this repo https://github.com/ChristianMPS/book-store
 
 1. Create the database. The script you can use is shown below:
 
