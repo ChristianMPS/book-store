@@ -5,15 +5,18 @@ export const createOrder = async (
   quantity: number,
   totalPrice: number
 ) => {
-  const { data, error } = await supabase
-    .from("orders")
-    .insert([{ idBook, quantity, totalPrice }]);
+  const { error } = await supabase.from("orders").insert([
+    {
+      id_book: idBook,
+      quantity,
+      total_price: totalPrice,
+    },
+  ]);
 
   if (error) {
-    throw new Error(error.message);
+    console.error("Supabase insert error:", error);
+    throw error;
   }
-
-  return data;
 };
 
 export const getAllOrders = async () => {
