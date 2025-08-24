@@ -21,7 +21,7 @@ created_at TIMESTAMP DEFAULT NOW(),
 total_price NUMERIC NOT NULL
 );
 
-Supabase was used for this project. Please in your google navegator type Supabase, open the link https://supabase.com and create a project (need to create and account for this).
+Supabase was used for this project. Please in your google navegator type Supabase, open the link https://supabase.com and create a project (need to create account for this).
 
 2. Create a file in the project root called .env
 
@@ -49,7 +49,8 @@ Supabase was used for this project. Please in your google navegator type Supabas
 5. You can test the following URLs in Postman:
    Please create a book with POST http://localhost:3000/api/books to start
    BOOKS:
-
+   headers: 
+   Key: Content-Type Value application/json
    - POST http://localhost:3000/api/books
      body example:
      {
